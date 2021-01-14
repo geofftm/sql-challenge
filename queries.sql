@@ -42,12 +42,41 @@ select employees.emp_no,
 	   employees.last_name,
 	   employees.first_name,
 	   departments.dept_name
-from employees
-join dept_emp
+from employees 
+join dept_emp 
 on employees.emp_no = dept_emp.emp_no
 join departments
 on departments.dept_no = dept_emp.dept_no;
 
+select emp.emp_no,
+	   emp.last_name,
+	   emp.first_name,
+	   dept.dept_name
+from employees as emp
+inner join dept_emp as demp
+on emp.emp_no = demp.emp_no
+inner join departments as dept
+on dept.dept_no = demp.dept_no;
 
+-- 5. List first name, last name, and sex for employees whose first name 
+--is "Hercules" and last names begin with "B."
 
+select first_name, last_name, sex
+from employees
+where first_name = 'Hercules' and last_name like 'B%';
 
+-- 6. List all employees in the Sales department, including their employee number, 
+--last name, first name, and department name.
+select emp.emp_no,
+	   emp.last_name,
+	   emp.first_name,
+	   dept.dept_name
+from employees as emp
+inner join dept_emp as demp
+on emp.emp_no = demp.emp_no
+inner join departments as dept
+on dept.dept_no = demp.dept_no
+where dept.dept_name = 'Sales'
+order by emp.emp_no;
+
+-- 7. 
